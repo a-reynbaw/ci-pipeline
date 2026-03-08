@@ -44,6 +44,8 @@ jobs:
       - name: Docker Scout Vulnerability Scan
         uses: docker/scout-action@v1
         with:
+          dockerhub-user: ${{ secrets.DOCKERHUB_USER }}
+          dockerhub-password: ${{ secrets.DOCKERHUB_PAT }}
           command: cves
           image: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:latest
           only-severities: critical,high,medium,low
